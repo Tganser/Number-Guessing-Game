@@ -4,3 +4,4 @@ function randomNumber(min, max){
 
 }
 module.exports = randomNumber;
+//this just generates the random number 

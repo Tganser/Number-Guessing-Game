@@ -32,7 +32,7 @@ app.post('/click', function(req, res){
     res.send('Prince');
     }
 
-
+// medium button
   else if (req.body.button === "medium") {
     console.log('Little Red Corvette', req.body.button);
     secretMedNumber = ranNum(1,100);
@@ -60,7 +60,7 @@ app.get( '/', function( req, res ){
 }); // end base url
 
 
-//add the user's guess to the array
+//add the user's guess to the array, logs if it is successful or unsucessful
 app.post( '/addGuess', function( req, res ){
   console.log( '/addGuess hit:', req.body );
   // push req.body content into userInput array
@@ -86,6 +86,8 @@ app.post( '/addGuess', function( req, res ){
 }); // end /addGues
 
 
+
+//this is what sends the array with user Input to the client
 app.get( '/items', function( req, res ) {
   console.log( '/items hit' );
   // return al items array in an object
@@ -96,6 +98,7 @@ app.get( '/items', function( req, res ) {
 }); // end /items
 
 
+// this works with the success ajax in the client
 app.get('/success', function(req, res){
   var responseObject2 = {
     status : "successful",
@@ -112,6 +115,8 @@ app.get('/success', function(req, res){
   }
 });
 
+
+//attempts to reset the array but unsuccessful
 function resetAll(){
   userInput.empty();
 

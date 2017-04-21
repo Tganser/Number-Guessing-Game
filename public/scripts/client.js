@@ -26,7 +26,9 @@ $(document).ready(function(){
     var objectToSend = {
       guess: $( '#guess' ).val(),
     };
-//user making a guess
+
+//user making a guess, checks for success
+// calls function for all guesses
     $.ajax({
           url: '/addGuess',
           type: 'POST',
@@ -43,6 +45,8 @@ $(document).ready(function(){
 
   });
 
+
+//this adds all the array items to the DOM
   function getAllGuesses(){
     $.ajax({
       url: '/items',
@@ -63,12 +67,11 @@ $(document).ready(function(){
     }); // end ajax
   } // end getInventory
 
-  //censorship changes
-
-  // more censorship changes
 
 });
 
+
+// this sets up easy medium and hard game modes
 function setUpGameType (mode){
   var buttonToSend = {
     button: mode
@@ -85,20 +88,22 @@ console.log('this is button to send ->', buttonToSend);
   });
 }// end setUpGameType function
 
+
+//attemps to reset the game
 function resetGame() {
   $('.container').empty();
   // userInput.empty();
 }//end resetGame function
 
-function successFail (foo){
 
+//this creates the success response from the server
+function successFail (foo){
   $.ajax({
     url: '/success',
     type: 'GET',
     success: function(response){
       console.log('success? -->', response);
       $( '.status' ).text(response.status);
-
     }
   });
 }//end successFail function
