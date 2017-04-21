@@ -16,13 +16,24 @@ app.listen( port, function(){
   console.log( 'server up on:', port );
 });
 
+//easy, medium, hard button
+app.post('/click', function(req, res){
+  console.log('bang', req.body);
+  res.send('Prince');
+});
+
+// app.post('/mediumClick', function(req, res){
+//   console.log('SHIT');
+// });
+
+
 app.get( '/', function( req, res ){
   console.log( 'base url hit' );
   // send back index.html as response
   res.sendFile( path.resolve( 'public/views/index.html' ) );
 }); // end base url
-
-
+//
+//
 app.post( '/addGuess', function( req, res ){
   console.log( '/addGuess hit:', req.body );
   // push req.body content into allItems array
@@ -30,7 +41,7 @@ app.post( '/addGuess', function( req, res ){
   console.log( 'userInput:', userInput);
   res.send( 200 );
 }); // end /addItem
-
+//
 app.get( '/items', function( req, res ) {
   console.log( '/items hit' );
   // return al items array in an object

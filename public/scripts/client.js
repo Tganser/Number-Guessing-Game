@@ -3,15 +3,29 @@ $(document).ready(function(){
 
   $('#reset').on('click', function(){
     console.log("we clicked the reset woo");
+
   });
+
+  $('#easy').on('click', function() {
+    console.log("clicked easy");
+    setUpGameType ('easy');
+  });//end easy click
+
+  $('#medium').on('click', function() {
+    console.log("clicked medium");
+  });//end medium
+
+  $('#hard').on('click', function() {
+    console.log("clicked hard");
+  });//end hard
 
   $('#submit').on('click', function(){
     console.log("we clicked the submit woo");
 
-    var objectToSend = {
-      guess: $( '#guess' ).val(),
-    };
-
+    // var objectToSend = {
+    //   guess: $( '#guess' ).val(),
+    // };
+// user making a guess
     $.ajax({
           url: '/addGuess',
           type: 'POST',
@@ -48,3 +62,19 @@ $(document).ready(function(){
   // more censorship changes
 
 });
+
+function setUpGameType (mode){
+  var buttonToSend = {
+    button: mode
+  };
+console.log('this is button to send ->', buttonToSend);
+  $.ajax({
+    url: '/click',
+    type: 'POST',
+    data: buttonToSend,
+    success: function(response){
+      console.log(buttonToSend);
+      console.log('click -->', response);
+    }
+  });
+}
